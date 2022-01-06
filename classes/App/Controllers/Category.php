@@ -1,5 +1,5 @@
 <?php
-namespace Ijdb\Controllers;
+namespace App\Controllers;
 
 class Category {
 	private $categoriesTable;

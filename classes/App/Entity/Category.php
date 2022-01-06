@@ -1,5 +1,5 @@
 <?php
-namespace Ijdb\Entity;
+namespace App\Entity;
 
 use Ninja\DatabaseTable;
 

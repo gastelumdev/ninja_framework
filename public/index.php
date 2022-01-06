@@ -54,7 +54,7 @@ try {
     // print ('index.php: 49 REQUEST_METHOD = ' . $_SERVER['REQUEST_METHOD']. '<br>');  // JG test
 	//****************************END OF JG  5/24/18 NEW line 8 - 42//****************************************************************************************
 
-	$entryPoint = new \Ninja\EntryPoint($route, $_SERVER['REQUEST_METHOD'], new \Ijdb\IjdbRoutes());
+	$entryPoint = new \Ninja\EntryPoint($route, $_SERVER['REQUEST_METHOD'], new \App\AppRoutes());
 	$entryPoint->run();
 }
 catch (PDOException $e) {
