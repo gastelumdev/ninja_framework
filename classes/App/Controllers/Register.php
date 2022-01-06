@@ -1,5 +1,5 @@
 <?php
-namespace Ijdb\Controllers;
+namespace App\Controllers;
 use \Ninja\DatabaseTable;
 
 class Register {

@@ -1,7 +1,7 @@
 <?php
-namespace Ijdb;
+namespace App;
 
-class IjdbRoutes implements \Ninja\Routes {
+class AppRoutes implements \Ninja\Routes {
 	private $authorsTable;
 	private $jokesTable;
 	private $categoriesTable;
@@ -11,18 +11,18 @@ class IjdbRoutes implements \Ninja\Routes {
 	public function __construct() {
 		include __DIR__ . '/../../includes/DatabaseConnection.php';
 
-		$this->jokesTable = new \Ninja\DatabaseTable($pdo, 'joke', 'id', '\Ijdb\Entity\Joke', [&$this->authorsTable, &$this->jokeCategoriesTable]);
- 		$this->authorsTable = new \Ninja\DatabaseTable($pdo, 'author', 'id', '\Ijdb\Entity\Author', [&$this->jokesTable]);
- 		$this->categoriesTable = new \Ninja\DatabaseTable($pdo, 'category', 'id', '\Ijdb\Entity\Category', [&$this->jokesTable, &$this->jokeCategoriesTable]);
+		$this->jokesTable = new \Ninja\DatabaseTable($pdo, 'joke', 'id', '\App\Entity\Joke', [&$this->authorsTable, &$this->jokeCategoriesTable]);
+ 		$this->authorsTable = new \Ninja\DatabaseTable($pdo, 'author', 'id', '\App\Entity\Author', [&$this->jokesTable]);
+ 		$this->categoriesTable = new \Ninja\DatabaseTable($pdo, 'category', 'id', '\App\Entity\Category', [&$this->jokesTable, &$this->jokeCategoriesTable]);
  		$this->jokeCategoriesTable = new \Ninja\DatabaseTable($pdo, 'joke_category', 'categoryId');
 		$this->authentication = new \Ninja\Authentication($this->authorsTable, 'email', 'password');
 	}
 
 	public function getRoutes(): array {
-		$jokeController = new \Ijdb\Controllers\Joke($this->jokesTable, $this->authorsTable, $this->categoriesTable, $this->authentication);
-		$authorController = new \Ijdb\Controllers\Register($this->authorsTable);
-		$loginController = new \Ijdb\Controllers\Login($this->authentication);
-		$categoryController = new \Ijdb\Controllers\Category($this->categoriesTable);
+		$jokeController = new \App\Controllers\Joke($this->jokesTable, $this->authorsTable, $this->categoriesTable, $this->authentication);
+		$authorController = new \App\Controllers\Register($this->authorsTable);
+		$loginController = new \App\Controllers\Login($this->authentication);
+		$categoryController = new \App\Controllers\Category($this->categoriesTable);
 
 		$routes = [
 			'author/register' => [
@@ -51,7 +51,7 @@ class IjdbRoutes implements \Ninja\Routes {
 					'action' => 'savePermissions'
 				],
 				'login' => true,
-				'permissions' => \Ijdb\Entity\Author::EDIT_USER_ACCESS
+				'permissions' => \App\Entity\Author::EDIT_USER_ACCESS
 			],
 			'author/list' => [
 				'GET' => [
@@ -59,7 +59,7 @@ class IjdbRoutes implements \Ninja\Routes {
 					'action' => 'list'
 				],
 				'login' => true,
-				'permissions' => \Ijdb\Entity\Author::EDIT_USER_ACCESS
+				'permissions' => \App\Entity\Author::EDIT_USER_ACCESS
 			],
 			'joke/edit' => [
 				'POST' => [
@@ -129,7 +129,7 @@ class IjdbRoutes implements \Ninja\Routes {
 					'action' => 'edit'
 				],
 				'login' => true,
-				'permissions' => \Ijdb\Entity\Author::EDIT_CATEGORIES
+				'permissions' => \App\Entity\Author::EDIT_CATEGORIES
 			],
 			'category/delete' => [
 				'POST' => [
@@ -137,7 +137,7 @@ class IjdbRoutes implements \Ninja\Routes {
 					'action' => 'delete'
 				],
 				'login' => true,
-				'permissions' => \Ijdb\Entity\Author::REMOVE_CATEGORIES
+				'permissions' => \App\Entity\Author::REMOVE_CATEGORIES
 			],
 			'category/list' => [
 				'GET' => [
@@ -145,7 +145,7 @@ class IjdbRoutes implements \Ninja\Routes {
 					'action' => 'list'
 				],
 				'login' => true,
-				'permissions' => \Ijdb\Entity\Author::EDIT_CATEGORIES
+				'permissions' => \App\Entity\Author::EDIT_CATEGORIES
 			],
 			'' => [
 				'GET' => [

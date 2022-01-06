@@ -2,7 +2,7 @@
 
 <ul class="categories">
   <?php foreach($categories as $category): ?>
-    <li><a href="/joke/list?category=<?=$category->id?>"><?=$category->name?></a><li>
+    <li><a href="index.php?joke/list?category=<?=$category->id?>"><?=$category->name?></a><li>
   <?php endforeach; ?>
 </ul>
 
@@ -26,11 +26,11 @@ echo $date->format('jS F Y');
 ?>)
 
 <?php if ($user): ?>
-  <?php if ($user->id == $joke->authorId || $user->hasPermission(\Ijdb\Entity\Author::EDIT_JOKES)): ?>
-  <a href="/joke/edit?id=<?=$joke->id?>">Edit</a>
+  <?php if ($user->id == $joke->authorId || $user->hasPermission(\App\Entity\Author::EDIT_JOKES)): ?>
+  <a href="index.php?joke/edit?id=<?=$joke->id?>">Edit</a>
   <?php endif; ?>
-  <?php if ($user->id == $joke->authorId || $user->hasPermission(\Ijdb\Entity\Author::DELETE_JOKES)): ?>
-  <form action="/joke/delete" method="post">
+  <?php if ($user->id == $joke->authorId || $user->hasPermission(\App\Entity\Author::DELETE_JOKES)): ?>
+  <form action="index.php?joke/delete" method="post">
     <input type="hidden" name="id" value="<?=$joke->id?>">
     <input type="submit" value="Delete">
   </form>
@@ -50,9 +50,9 @@ $numPages = ceil($totalJokes/10);
 for ($i = 1; $i <= $numPages; $i++):
   if ($i == $currentPage):
 ?>
-  <a class="currentpage" href="/joke/list?page=<?=$i?><?=!empty($categoryId) ? '&category=' . $categoryId : '' ?>"><?=$i?></a>
+  <a class="currentpage" href="index.php?joke/list?page=<?=$i?><?=!empty($categoryId) ? '&category=' . $categoryId : '' ?>"><?=$i?></a>
 <?php else: ?>
-  <a href="/joke/list?page=<?=$i?><?=!empty($categoryId) ? '&category=' . $categoryId : '' ?>"><?=$i?></a>
+  <a href="index.php?joke/list?page=<?=$i?><?=!empty($categoryId) ? '&category=' . $categoryId : '' ?>"><?=$i?></a>
 <?php endif; ?>
 <?php endfor; ?>
 
