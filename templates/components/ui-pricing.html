@@ -4,11 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard - Voler Admin Dashboard</title>
+    <title>Pricing - Voler Admin Dashboard</title>
 
     <link rel="stylesheet" href="assets/css/bootstrap.css">
-
-    <link rel="stylesheet" href="assets/vendors/chartjs/Chart.min.css">
 
     <link rel="stylesheet" href="assets/vendors/perfect-scrollbar/perfect-scrollbar.css">
     <link rel="stylesheet" href="assets/css/app.css">
@@ -30,7 +28,7 @@
 
 
 
-                        <li class="sidebar-item active ">
+                        <li class="sidebar-item  ">
                             <a href="index.html" class='sidebar-link'>
                                 <i data-feather="home" width="20"></i>
                                 <span>Dashboard</span>
@@ -226,13 +224,13 @@
 
 
 
-                        <li class="sidebar-item  has-sub">
+                        <li class="sidebar-item active has-sub">
                             <a href="#" class='sidebar-link'>
                                 <i data-feather="user" width="20"></i>
                                 <span>Widgets</span>
                             </a>
 
-                            <ul class="submenu ">
+                            <ul class="submenu active">
 
                                 <li>
                                     <a href="ui-chatbox.html">Chatbox</a>
@@ -348,7 +346,7 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav d-flex align-items-center navbar-light ms-auto">
+                    <ul class="navbar-nav d-flex align-items-center navbar-light ml-auto">
                         <li class="dropdown nav-icon">
                             <a href="#" data-bs-toggle="dropdown"
                                 class="nav-link  dropdown-toggle nav-link-lg nav-link-user">
@@ -375,7 +373,7 @@
                         </li>
                         <li class="dropdown nav-icon me-2">
                             <a href="#" data-bs-toggle="dropdown"
-                                class="nav-link dropdown-toggle nav-link-lg nav-link-user">
+                                class="nav-link  dropdown-toggle nav-link-lg nav-link-user">
                                 <div class="d-lg-inline-block">
                                     <i data-feather="mail"></i>
                                 </div>
@@ -407,27 +405,118 @@
                     </ul>
                 </div>
             </nav>
-	<?=$output?>
-	<footer>
-                <div class="footer clearfix mb-0 text-muted">
-                    <div class="float-start">
-                        <p>2020 &copy; Voler</p>
+
+            <div class="main-content container-fluid">
+                <div class="page-title">
+                    <div class="row">
+                        <div class="col-12 col-md-6 order-md-1 order-last">
+                            <h3>Pricing</h3>
+                            <p class="text-subtitle text-muted">Nice pricing list that you can use for sell some stuff.
+                            </p>
+                        </div>
+                        <div class="col-12 col-md-6 order-md-2 order-first">
+                            <nav aria-label="breadcrumb" class='breadcrumb-header'>
+                                <ol class="breadcrumb">
+                                    <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
+                                    <li class="breadcrumb-item active" aria-current="page">Pricing</li>
+                                </ol>
+                            </nav>
+                        </div>
                     </div>
-                    <div class="float-end">
-                        <p>Crafted with <span class='text-danger'><i data-feather="heart"></i></span> by <a
-                                href="http://ahmadsaugi.com">Ahmad Saugi</a></p>
-                    </div>
+
                 </div>
-            </footer>
+                <section class="section">
+                    <div class="row">
+                        <div class="col-12 col-md-8 offset-md-2">
+                            <div class="pricing">
+                                <div class="row align-items-center">
+                                    <div class="col-md-4 px-0">
+                                        <div class="card">
+                                            <div class="card-header text-center">
+                                                <h4 class='card-title'>Basic</h4>
+                                                <p class='text-center'>A standart features you can get</p>
+                                            </div>
+                                            <h1 class="price">$100</h1>
+                                            <ul>
+                                                <li><i data-feather="check-circle"></i>Lorem ipsum dolor sit amet</li>
+                                                <li><i data-feather="check-circle"></i>Lorem ipsum dolor sit </li>
+                                                <li><i data-feather="check-circle"></i>Lorem ipsum dolor amet</li>
+                                                <li><i data-feather="check-circle"></i>Lorem ipsum dolor sit amet</li>
+                                                <li><i data-feather="check-circle"></i>Lorem ipsum sit amet</li>
+                                                <li><i data-feather="check-circle"></i>Lorem dolor sit amet</li>
+                                            </ul>
+                                            <div class="card-footer">
+                                                <button class="btn btn-primary btn-block">Order Now</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 px-0">
+                                        <div class="card card-highlighted">
+                                            <div class="card-header text-center">
+                                                <h4 class='card-title'>Enterpreneur</h4>
+                                                <p></p>
+                                            </div>
+                                            <h1 class="price text-white">$150</h1>
+                                            <ul>
+                                                <li><i data-feather="check-circle"></i>Lorem ipsum dolor sit amet</li>
+                                                <li><i data-feather="check-circle"></i>Lorem ipsum dolor sit amet</li>
+                                                <li><i data-feather="check-circle"></i>Lorem ipsum dolor sit amet</li>
+                                                <li><i data-feather="check-circle"></i>Lorem ipsum dolor sit amet</li>
+                                                <li><i data-feather="check-circle"></i>Lorem ipsum dolor sit amet</li>
+                                                <li><i data-feather="check-circle"></i>Lorem ipsum dolor sit amet</li>
+                                                <li><i data-feather="check-circle"></i>Lorem ipsum dolor sit amet</li>
+                                                <li><i data-feather="check-circle"></i>Lorem ipsum dolor sit amet</li>
+                                                <li><i data-feather="check-circle"></i>Lorem ipsum dolor sit amet</li>
+                                            </ul>
+                                            <div class="card-footer">
+                                                <button class="btn btn-outline-white btn-block">Order Now</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 px-0">
+                                        <div class="card">
+                                            <div class="card-header text-center">
+                                                <h4 class='card-title'>Professional</h4>
+                                                <p class='text-center'>A higher features you will need</p>
+                                            </div>
+                                            <h1 class="price">$100</h1>
+                                            <ul>
+                                                <li><i data-feather="check-circle"></i>Lorem ipsum dolor sit amet</li>
+                                                <li><i data-feather="check-circle"></i>Lorem ipsum dolor sit </li>
+                                                <li><i data-feather="check-circle"></i>Lorem ipsum dolor amet</li>
+                                                <li><i data-feather="check-circle"></i>Lorem ipsum dolor sit amet</li>
+                                                <li><i data-feather="check-circle"></i>Lorem ipsum sit amet</li>
+                                                <li><i data-feather="check-circle"></i>Lorem dolor sit amet</li>
+                                            </ul>
+                                            <div class="card-footer">
+                                                <button class="btn btn-primary btn-block">Order Now</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+            </section>
         </div>
+
+        <footer>
+            <div class="footer clearfix mb-0 text-muted">
+                <div class="float-start">
+                    <p>2020 &copy; Voler</p>
+                </div>
+                <div class="float-end">
+                    <p>Crafted with <span class='text-danger'><i data-feather="heart"></i></span> by <a
+                            href="http://ahmadsaugi.com">Ahmad Saugi</a></p>
+                </div>
+            </div>
+        </footer>
+    </div>
     </div>
     <script src="assets/js/feather-icons/feather.min.js"></script>
     <script src="assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
     <script src="assets/js/app.js"></script>
-
-    <script src="assets/vendors/chartjs/Chart.min.js"></script>
-    <script src="assets/vendors/apexcharts/apexcharts.min.js"></script>
-    <script src="assets/js/pages/dashboard.js"></script>
 
     <script src="assets/js/main.js"></script>
 </body>

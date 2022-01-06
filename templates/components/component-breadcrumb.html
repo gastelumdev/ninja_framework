@@ -4,11 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard - Voler Admin Dashboard</title>
+    <title>Breadcrumb - Voler Admin Dashboard</title>
 
     <link rel="stylesheet" href="assets/css/bootstrap.css">
-
-    <link rel="stylesheet" href="assets/vendors/chartjs/Chart.min.css">
 
     <link rel="stylesheet" href="assets/vendors/perfect-scrollbar/perfect-scrollbar.css">
     <link rel="stylesheet" href="assets/css/app.css">
@@ -30,7 +28,7 @@
 
 
 
-                        <li class="sidebar-item active ">
+                        <li class="sidebar-item  ">
                             <a href="index.html" class='sidebar-link'>
                                 <i data-feather="home" width="20"></i>
                                 <span>Dashboard</span>
@@ -41,13 +39,13 @@
 
 
 
-                        <li class="sidebar-item  has-sub">
+                        <li class="sidebar-item active has-sub">
                             <a href="#" class='sidebar-link'>
                                 <i data-feather="triangle" width="20"></i>
                                 <span>Components</span>
                             </a>
 
-                            <ul class="submenu ">
+                            <ul class="submenu active">
 
                                 <li>
                                     <a href="component-alert.html">Alert</a>
@@ -407,8 +405,92 @@
                     </ul>
                 </div>
             </nav>
-	<?=$output?>
-	<footer>
+
+            <div class="main-content container-fluid">
+                <div class="page-title">
+                    <div class="row">
+                        <div class="col-12 col-md-6">
+                            <h3>Breadcrumb</h3>
+                            <p class="text-subtitle text-muted">Indicate the current page’s location within a
+                                navigational hierarchy that automatically adds separators via CSS.</p>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <nav aria-label="breadcrumb" class='breadcrumb-header text-right'>
+                                <ol class="breadcrumb">
+                                    <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
+                                    <li class="breadcrumb-item active" aria-current="page">Breadcrumb</li>
+                                </ol>
+                            </nav>
+                        </div>
+                    </div>
+
+                </div>
+                <section class="section">
+                    <div class="row">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4 class="card-title">Default</h4>
+                            </div>
+                            <div class="card-body">
+                                <nav aria-label="breadcrumb">
+                                    <ol class="breadcrumb">
+                                        <li class="breadcrumb-item active" aria-current="page">Home</li>
+                                    </ol>
+                                </nav>
+
+                                <nav aria-label="breadcrumb">
+                                    <ol class="breadcrumb">
+                                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                                        <li class="breadcrumb-item active" aria-current="page">Library</li>
+                                    </ol>
+                                </nav>
+
+                                <nav aria-label="breadcrumb">
+                                    <ol class="breadcrumb">
+                                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                                        <li class="breadcrumb-item"><a href="#">Library</a></li>
+                                        <li class="breadcrumb-item active" aria-current="page">Data</li>
+                                    </ol>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section class="section">
+                    <div class="row">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4 class="card-title">Position</h4>
+                            </div>
+                            <div class="card-body">
+                                <nav aria-label="breadcrumb">
+                                    <ol class="breadcrumb">
+                                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                                        <li class="breadcrumb-item"><a href="#">Library</a></li>
+                                        <li class="breadcrumb-item active" aria-current="page">Data</li>
+                                    </ol>
+                                </nav>
+                                <nav aria-label="breadcrumb">
+                                    <ol class="breadcrumb breadcrumb-center">
+                                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                                        <li class="breadcrumb-item"><a href="#">Library</a></li>
+                                        <li class="breadcrumb-item active" aria-current="page">Data</li>
+                                    </ol>
+                                </nav>
+                                <nav aria-label="breadcrumb">
+                                    <ol class="breadcrumb breadcrumb-right">
+                                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                                        <li class="breadcrumb-item"><a href="#">Library</a></li>
+                                        <li class="breadcrumb-item active" aria-current="page">Data</li>
+                                    </ol>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <footer>
                 <div class="footer clearfix mb-0 text-muted">
                     <div class="float-start">
                         <p>2020 &copy; Voler</p>
@@ -424,10 +506,6 @@
     <script src="assets/js/feather-icons/feather.min.js"></script>
     <script src="assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
     <script src="assets/js/app.js"></script>
-
-    <script src="assets/vendors/chartjs/Chart.min.js"></script>
-    <script src="assets/vendors/apexcharts/apexcharts.min.js"></script>
-    <script src="assets/js/pages/dashboard.js"></script>
 
     <script src="assets/js/main.js"></script>
 </body>
