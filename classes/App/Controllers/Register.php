@@ -83,10 +83,13 @@ class Register {
 
 	public function list() {
 		$authors = $this->authorsTable->findAll();
+		$count = $this->authorsTable->total();
 
-		return ['template' => 'authorlist.html.php',
-				'title' => 'Author List',
+		return ['template' => 'admin_users_list.html.php',
+				'title' => 'Users',
 				'variables' => [
+						'title' => 'Users',
+						'count' => $count,
 						'authors' => $authors
 					]
 				];
