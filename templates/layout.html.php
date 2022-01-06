@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<link rel="stylesheet" href="/jokes.css">
+		<link rel="stylesheet" href="jokes.css">
 		<title><?=$title?></title>
 	</head>
 	<body>
@@ -11,13 +11,13 @@
 			<h1>Internet Joke Database</h1>
 		</header>
 		<ul>
-			<li><a href="/">Home</a></li>
-			<li><a href="/joke/list">Jokes List</a></li>
-			<li><a href="/joke/edit">Add a new Joke</a></li>
+			<li><a href="index.php">Home</a></li>
+			<li><a href="index.php?joke/list">Jokes List</a></li>
+			<li><a href="index.php?joke/edit">Add a new Joke</a></li>
 			<?php if ($loggedIn): ?>
-			<li><a href="/logout">Log out</a></li>
+			<li><a href="index.php?logout">Log out</a></li>
 			<?php else: ?>
-			<li><a href="/login">Log in</a></li>
+			<li><a href="index.php?login">Log in</a></li>
 			<?php endif; ?>
 		</ul>
 	</nav>
