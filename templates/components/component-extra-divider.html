@@ -4,11 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard - Voler Admin Dashboard</title>
+    <title>Divider - Voler Admin Dashboard</title>
 
     <link rel="stylesheet" href="assets/css/bootstrap.css">
-
-    <link rel="stylesheet" href="assets/vendors/chartjs/Chart.min.css">
 
     <link rel="stylesheet" href="assets/vendors/perfect-scrollbar/perfect-scrollbar.css">
     <link rel="stylesheet" href="assets/css/app.css">
@@ -30,7 +28,7 @@
 
 
 
-                        <li class="sidebar-item active ">
+                        <li class="sidebar-item  ">
                             <a href="index.html" class='sidebar-link'>
                                 <i data-feather="home" width="20"></i>
                                 <span>Dashboard</span>
@@ -41,13 +39,13 @@
 
 
 
-                        <li class="sidebar-item  has-sub">
+                        <li class="sidebar-item active has-sub">
                             <a href="#" class='sidebar-link'>
                                 <i data-feather="triangle" width="20"></i>
                                 <span>Components</span>
                             </a>
 
-                            <ul class="submenu ">
+                            <ul class="submenu active">
 
                                 <li>
                                     <a href="component-alert.html">Alert</a>
@@ -112,13 +110,13 @@
 
 
 
-                        <li class="sidebar-item  has-sub">
+                        <li class="sidebar-item active has-sub">
                             <a href="#" class='sidebar-link'>
                                 <i data-feather="briefcase" width="20"></i>
                                 <span>Extra Components</span>
                             </a>
 
-                            <ul class="submenu ">
+                            <ul class="submenu active">
 
                                 <li>
                                     <a href="component-extra-avatar.html">Avatar</a>
@@ -407,8 +405,98 @@
                     </ul>
                 </div>
             </nav>
-	<?=$output?>
-	<footer>
+
+            <div class="main-content container-fluid">
+                <div class="page-title">
+                    <div class="row">
+                        <div class="col-12 col-md-6 order-md-1 order-last">
+                            <h3>Divider</h3>
+                            <p class="text-subtitle text-muted">A divider that can separate your content</p>
+                        </div>
+                        <div class="col-12 col-md-6 order-md-2 order-first">
+                            <nav aria-label="breadcrumb" class='breadcrumb-header'>
+                                <ol class="breadcrumb">
+                                    <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
+                                    <li class="breadcrumb-item active" aria-current="page">Divider</li>
+                                </ol>
+                            </nav>
+                        </div>
+                    </div>
+
+                </div>
+                <section class="section">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h4 class="card-title">Default</h4>
+                                </div>
+                                <div class="card-body">
+                                    <p>You can use default divider with <code>&lt;hr&gt;</code><code><hr></code></p>
+                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident nostrum
+                                        numquam reprehenderit facilis. Dolor blanditiis commodi voluptate esse
+                                        voluptatum aut natus, distinctio at, officiis ipsam molestiae doloribus ratione
+                                        corrupti dolorum.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section class="section">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h4 class="card-title">Divider with Text</h4>
+                                </div>
+                                <div class="card-body">
+                                    <p>Use <code>.divider-text</code> and wrapped by <code>.divider</code> to create a
+                                        divider text </p>
+                                    <div class="divider">
+                                        <div class="divider-text">Hello there!</div>
+                                    </div>
+                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident nostrum
+                                        numquam reprehenderit facilis. Dolor blanditiis commodi voluptate esse
+                                        voluptatum aut natus, distinctio at, officiis ipsam molestiae doloribus ratione
+                                        corrupti dolorum.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section class="section">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h4 class="card-title">Divider Position</h4>
+                                </div>
+                                <div class="card-body">
+                                    <p>Use <code>.divider-{left|left-center|right-center|right}</code> and with
+                                        <code>.divider</code> to change the text position </p>
+                                    <div class="divider divider-left">
+                                        <div class="divider-text">Left</div>
+                                    </div>
+                                    <div class="divider divider-left-center">
+                                        <div class="divider-text">Left Center</div>
+                                    </div>
+                                    <div class="divider">
+                                        <div class="divider-text">Center</div>
+                                    </div>
+                                    <div class="divider divider-right-center">
+                                        <div class="divider-text">Right Center</div>
+                                    </div>
+                                    <div class="divider divider-right">
+                                        <div class="divider-text">Right</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <footer>
                 <div class="footer clearfix mb-0 text-muted">
                     <div class="float-start">
                         <p>2020 &copy; Voler</p>
@@ -424,10 +512,6 @@
     <script src="assets/js/feather-icons/feather.min.js"></script>
     <script src="assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
     <script src="assets/js/app.js"></script>
-
-    <script src="assets/vendors/chartjs/Chart.min.js"></script>
-    <script src="assets/vendors/apexcharts/apexcharts.min.js"></script>
-    <script src="assets/js/pages/dashboard.js"></script>
 
     <script src="assets/js/main.js"></script>
 </body>
