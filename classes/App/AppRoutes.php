@@ -25,6 +25,12 @@ class AppRoutes implements \Ninja\Routes {
 		$categoryController = new \App\Controllers\Category($this->categoriesTable);
 
 		$routes = [
+			'admin/users' => [
+				'GET' => [
+					'controller' => $authorController,
+					'action' => 'list'
+				]
+			],
 			'author/register' => [
 				'GET' => [
 					'controller' => $authorController,
