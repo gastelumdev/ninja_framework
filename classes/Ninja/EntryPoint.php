@@ -44,22 +44,29 @@ class EntryPoint {
 		else {
 			$controller = $routes[$this->route][$this->method]['controller'];
 			$action = $routes[$this->route][$this->method]['action'];
+			$template = $routes[$this->route]['template'] ?? '';
 			$page = $controller->$action();
 
 			$title = $page['title'];
 
-			if (isset($page['variables'])) {
-				$output = $this->loadTemplate($page['template'], $page['variables']);
-			}
-			else {
-				$output = $this->loadTemplate($page['template']);
-			}
+			// 2021-07-01 OG NEW - if template is set, then load the template 
+			if ($template != '') {
+				if (isset($page['variables'])) {
+					$output = $this->loadTemplate($page['template'], $page['variables']);
+				}
+				else {
+					$output = $this->loadTemplate($page['template']);
+				}
 
-			echo $this->loadTemplate('layout.html.php', ['loggedIn' => $authentication->isLoggedIn(),
-			                                             'output' => $output,
-			                                             'title' => $title
-			                                            ]);
-
+				echo $this->loadTemplate($template, ['loggedIn' => $authentication->isLoggedIn(),
+															'output' => $output,
+															'title' => $title
+															]);
+				// 2021-07-01 OG NEW - else, echo the page variable that returns json 
+			} else {
+				echo $template;
+			}
+														
 		}
 
 	}

@@ -26,14 +26,22 @@
                     <ul class="menu">
 
 
-                        <li class='sidebar-title'>Main Menu</li>
-
-
+                        <li class='sidebar-title'>Admin Dashboard</li>
 
                         <li class="sidebar-item active ">
                             <a href="index.php?admin/users" class='sidebar-link'>
                                 <i data-feather="users" width="20"></i>
                                 <span>Users</span>
+                            </a>
+                        </li>
+
+
+                        <li class='sidebar-title'>Public Site</li>
+
+                        <li class="sidebar-item">
+                            <a href="index.php?home" class='sidebar-link'>
+                                <i data-feather="home" width="20"></i>
+                                <span>Home</span>
                             </a>
                         </li>
 

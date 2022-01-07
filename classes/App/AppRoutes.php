@@ -20,11 +20,19 @@ class AppRoutes implements \Ninja\Routes {
 		$loginController = new \App\Controllers\Login($this->authentication);
 
 		$routes = [
+			'home' => [
+				'GET' => [
+					'controller' => $userController,
+					'action' => 'show'
+				],
+				'template' => 'layout_public.html.php'
+			],
 			'admin/users' => [
 				'GET' => [
 					'controller' => $userController,
 					'action' => 'list'
-				]
+				],
+				'template' => 'layout_admin.html.php'
 			],
 			'user/register' => [
 				'GET' => [
