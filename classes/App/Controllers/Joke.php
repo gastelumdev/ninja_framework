@@ -9,10 +9,9 @@ class Joke {
 	private $categoriesTable;
 	private $authentication;
 
-	public function __construct(DatabaseTable $jokesTable, DatabaseTable $authorsTable, DatabaseTable $categoriesTable, Authentication $authentication) {
+	public function __construct(DatabaseTable $jokesTable, DatabaseTable $authorsTable, Authentication $authentication) {
 		$this->jokesTable = $jokesTable;
 		$this->authorsTable = $authorsTable;
-		$this->categoriesTable = $categoriesTable;
 		$this->authentication = $authentication;
 	}
 
@@ -63,7 +62,7 @@ class Joke {
 
 		$joke = $this->jokesTable->findById($_POST['id']);
 
-		if ($joke->authorId != $author->id && !$author->hasPermission(\Ijdb\Entity\Author::DELETE_JOKES) ) {
+		if ($joke->authorId != $author->id) {
 			return;
 		}
 		

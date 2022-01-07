@@ -3,10 +3,10 @@ namespace App\Controllers;
 use \Ninja\DatabaseTable;
 
 class Register {
-	private $authorsTable;
+	private $usersTable;
 
-	public function __construct(DatabaseTable $authorsTable) {
-		$this->authorsTable = $authorsTable;
+	public function __construct(DatabaseTable $usersTable) {
+		$this->usersTable = $usersTable;
 	}
 
 	public function registrationForm() {
@@ -21,39 +21,39 @@ class Register {
 	}
 
 	public function registerUser() {
-		$author = $_POST['author'];
+		$user = $_POST['user'];
 
 		//Assume the data is valid to begin with
 		$valid = true;
 		$errors = [];
 
 		//But if any of the fields have been left blank, set $valid to false
-		if (empty($author['name'])) {
+		if (empty($user['name'])) {
 			$valid = false;
 			$errors[] = 'Name cannot be blank';
 		}
 
-		if (empty($author['email'])) {
+		if (empty($user['email'])) {
 			$valid = false;
 			$errors[] = 'Email cannot be blank';
 		}
-		else if (filter_var($author['email'], FILTER_VALIDATE_EMAIL) == false) {
+		else if (filter_var($user['email'], FILTER_VALIDATE_EMAIL) == false) {
 			$valid = false;
 			$errors[] = 'Invalid email address';
 		}
 		else { //if the email is not blank and valid:
 			//convert the email to lowercase
-			$author['email'] = strtolower($author['email']);
+			$user['email'] = strtolower($user['email']);
 
-			//search for the lowercase version of `$author['email']`
-			if (count($this->authorsTable->find('email', $author['email'])) > 0) {
+			//search for the lowercase version of `$user['email']`
+			if (count($this->usersTable->find('email', $user['email'])) > 0) {
 				$valid = false;
 				$errors[] = 'That email address is already registered';
 			}
 		}
 
 
-		if (empty($author['password'])) {
+		if (empty($user['password'])) {
 			$valid = false;
 			$errors[] = 'Password cannot be blank';
 		}
@@ -61,13 +61,13 @@ class Register {
 		//If $valid is still true, no fields were blank and the data can be added
 		if ($valid == true) {
 			//Hash the password before saving it in the database
-			$author['password'] = password_hash($author['password'], PASSWORD_DEFAULT);
+			$user['password'] = password_hash($user['password'], PASSWORD_DEFAULT);
 
-			//When submitted, the $author variable now contains a lowercase value for email
+			//When submitted, the $user variable now contains a lowercase value for email
 			//and a hashed password
-			$this->authorsTable->save($author);
+			$this->usersTable->save($user);
 
-			header('Location: /author/success');
+			header('Location: /user/success');
 		}
 		else {
 			//If the data is not valid, show the form again
@@ -75,50 +75,50 @@ class Register {
 				    'title' => 'Register an account',
 				    'variables' => [
 				    	'errors' => $errors,
-				    	'author' => $author
+				    	'user' => $user
 				    ]
 				   ]; 
 		}
 	}
 
 	public function list() {
-		$authors = $this->authorsTable->findAll();
-		$count = $this->authorsTable->total();
+		$users = $this->usersTable->findAll();
+		$count = $this->usersTable->total();
 
 		return ['template' => 'admin_users_list.html.php',
 				'title' => 'Users',
 				'variables' => [
 						'title' => 'Users',
 						'count' => $count,
-						'authors' => $authors
+						'users' => $users
 					]
 				];
 	}
 
 	public function permissions() {
 
-		$author = $this->authorsTable->findById($_GET['id']);
+		$user = $this->usersTable->findById($_GET['id']);
 
-		$reflected = new \ReflectionClass('\Ijdb\Entity\Author');
+		$reflected = new \ReflectionClass('\Ijdb\Entity\user');
 		$constants = $reflected->getConstants();
 
 		return ['template' => 'permissions.html.php',
 				'title' => 'Edit Permissions',
 				'variables' => [
-						'author' => $author,
+						'user' => $user,
 						'permissions' => $constants
 					]
 				];	
 	}
 
 	public function savePermissions() {
-		$author = [
+		$user = [
 			'id' => $_GET['id'],
 			'permissions' => array_sum($_POST['permissions'] ?? [])
 		];
 
-		$this->authorsTable->save($author);
+		$this->usersTable->save($user);
 
-		header('location: /author/list');
+		header('location: /user/list');
 	}
 }
