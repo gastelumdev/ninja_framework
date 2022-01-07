@@ -121,4 +121,11 @@ class Register {
 
 		header('location: /user/list');
 	}
+
+	public function show() {
+		return [
+			'template' => 'home.html.php',
+			'title' => 'Home'
+		];
+	}
 }
