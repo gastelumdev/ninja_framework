@@ -2,70 +2,52 @@
 namespace App;
 
 class AppRoutes implements \Ninja\Routes {
-	private $authorsTable;
+	private $usersTable;
 	private $jokesTable;
-	private $categoriesTable;
-	private $jokeCategoriesTable;
 	private $authentication;
 
 	public function __construct() {
 		include __DIR__ . '/../../includes/DatabaseConnection.php';
 
-		$this->jokesTable = new \Ninja\DatabaseTable($pdo, 'joke', 'id', '\App\Entity\Joke', [&$this->authorsTable, &$this->jokeCategoriesTable]);
- 		$this->authorsTable = new \Ninja\DatabaseTable($pdo, 'author', 'id', '\App\Entity\Author', [&$this->jokesTable]);
- 		$this->categoriesTable = new \Ninja\DatabaseTable($pdo, 'category', 'id', '\App\Entity\Category', [&$this->jokesTable, &$this->jokeCategoriesTable]);
- 		$this->jokeCategoriesTable = new \Ninja\DatabaseTable($pdo, 'joke_category', 'categoryId');
-		$this->authentication = new \Ninja\Authentication($this->authorsTable, 'email', 'password');
+		$this->jokesTable = new \Ninja\DatabaseTable($pdo, 'joke', 'id');
+ 		$this->usersTable = new \Ninja\DatabaseTable($pdo, 'user', 'id');
+		$this->authentication = new \Ninja\Authentication($this->usersTable, 'email', 'password');
 	}
 
 	public function getRoutes(): array {
-		$jokeController = new \App\Controllers\Joke($this->jokesTable, $this->authorsTable, $this->categoriesTable, $this->authentication);
-		$authorController = new \App\Controllers\Register($this->authorsTable);
+		$jokeController = new \App\Controllers\Joke($this->jokesTable, $this->usersTable, $this->authentication);
+		$userController = new \App\Controllers\Register($this->usersTable);
 		$loginController = new \App\Controllers\Login($this->authentication);
-		$categoryController = new \App\Controllers\Category($this->categoriesTable);
 
 		$routes = [
 			'admin/users' => [
 				'GET' => [
-					'controller' => $authorController,
+					'controller' => $userController,
 					'action' => 'list'
 				]
 			],
-			'author/register' => [
+			'user/register' => [
 				'GET' => [
-					'controller' => $authorController,
+					'controller' => $userController,
 					'action' => 'registrationForm'
 				],
 				'POST' => [
-					'controller' => $authorController,
+					'controller' => $userController,
 					'action' => 'registerUser'
 				]
 			],
-			'author/success' => [
+			'user/success' => [
 				'GET' => [
-					'controller' => $authorController,
+					'controller' => $userController,
 					'action' => 'success'
 				]
 			],
-			'author/permissions' => [
+			'user/list' => [
 				'GET' => [
-					'controller' => $authorController,
-					'action' => 'permissions'
-				],
-				'POST' => [
-					'controller' => $authorController,
-					'action' => 'savePermissions'
-				],
-				'login' => true,
-				'permissions' => \App\Entity\Author::EDIT_USER_ACCESS
-			],
-			'author/list' => [
-				'GET' => [
-					'controller' => $authorController,
+					'controller' => $userController,
 					'action' => 'list'
 				],
-				'login' => true,
-				'permissions' => \App\Entity\Author::EDIT_USER_ACCESS
+				'login' => true
 			],
 			'joke/edit' => [
 				'POST' => [
@@ -124,34 +106,6 @@ class AppRoutes implements \Ninja\Routes {
 					'controller' => $loginController,
 					'action' => 'processLogin'
 				]
-			],
-			'category/edit' => [
-				'POST' => [
-					'controller' => $categoryController,
-					'action' => 'saveEdit'
-				],
-				'GET' => [
-					'controller' => $categoryController,
-					'action' => 'edit'
-				],
-				'login' => true,
-				'permissions' => \App\Entity\Author::EDIT_CATEGORIES
-			],
-			'category/delete' => [
-				'POST' => [
-					'controller' => $categoryController,
-					'action' => 'delete'
-				],
-				'login' => true,
-				'permissions' => \App\Entity\Author::REMOVE_CATEGORIES
-			],
-			'category/list' => [
-				'GET' => [
-					'controller' => $categoryController,
-					'action' => 'list'
-				],
-				'login' => true,
-				'permissions' => \App\Entity\Author::EDIT_CATEGORIES
 			],
 			'' => [
 				'GET' => [
