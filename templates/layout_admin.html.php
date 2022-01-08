@@ -12,6 +12,7 @@
 
     <link rel="stylesheet" href="assets/vendors/perfect-scrollbar/perfect-scrollbar.css">
     <link rel="stylesheet" href="assets/css/app.css">
+    <link rel="stylesheet" href="assets/css/custom.css">
     <link rel="shortcut icon" href="assets/images/favicon.svg" type="image/x-icon">
 </head>
 
@@ -34,12 +35,18 @@
                                 <span>Users</span>
                             </a>
                         </li>
+                        <li class="sidebar-item">
+                            <a href="index.php?admin/events" class='sidebar-link'>
+                                <i data-feather="users" width="20"></i>
+                                <span>Events</span>
+                            </a>
+                        </li>
 
 
                         <li class='sidebar-title'>Public Site</li>
 
                         <li class="sidebar-item">
-                            <a href="index.php?home" class='sidebar-link'>
+                            <a href="index.php" class='sidebar-link'>
                                 <i data-feather="home" width="20"></i>
                                 <span>Home</span>
                             </a>
