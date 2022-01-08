@@ -9,24 +9,30 @@ class AppRoutes implements \Ninja\Routes {
 	public function __construct() {
 		include __DIR__ . '/../../includes/DatabaseConnection.php';
 
-		$this->jokesTable = new \Ninja\DatabaseTable($pdo, 'joke', 'id');
+		$this->eventsTable = new \Ninja\DatabaseTable($pdo, 'event', 'id');
  		$this->usersTable = new \Ninja\DatabaseTable($pdo, 'user', 'id');
 		$this->authentication = new \Ninja\Authentication($this->usersTable, 'email', 'password');
 	}
 
 	public function getRoutes(): array {
-		$jokeController = new \App\Controllers\Joke($this->jokesTable, $this->usersTable, $this->authentication);
+		$eventController = new \App\Controllers\Event($this->eventsTable, $this->authentication);
 		$userController = new \App\Controllers\Register($this->usersTable);
 		$loginController = new \App\Controllers\Login($this->authentication);
 
 		$routes = [
-			'home' => [
+			// ==========================================================================
+			// PUBLIC HOME PAGE
+			// ==========================================================================
+			'' => [
 				'GET' => [
 					'controller' => $userController,
 					'action' => 'show'
 				],
 				'template' => 'layout_public.html.php'
 			],
+			// ==========================================================================
+			// USERS
+			// ==========================================================================
 			'admin/users' => [
 				'GET' => [
 					'controller' => $userController,
@@ -50,42 +56,25 @@ class AppRoutes implements \Ninja\Routes {
 					'action' => 'success'
 				]
 			],
-			'user/list' => [
+			// ==========================================================================
+			// EVENTS
+			// ==========================================================================
+			'admin/events' => [
 				'GET' => [
-					'controller' => $userController,
+					'controller' => $eventController,
 					'action' => 'list'
 				],
-				'login' => true
+				'template' => 'layout_admin.html.php'
 			],
-			'joke/edit' => [
-				'POST' => [
-					'controller' => $jokeController,
-					'action' => 'saveEdit'
-				],
-				'GET' => [
-					'controller' => $jokeController,
-					'action' => 'edit'
-				],
-				'login' => true
-			],
-			'joke/delete' => [
-				'POST' => [
-					'controller' => $jokeController,
-					'action' => 'delete'
-				],
-				'login' => true
-			],
-			'joke/list' => [
-				'GET' => [
-					'controller' => $jokeController,
-					'action' => 'list'
-				]
-			],
+			// ==========================================================================
+			// AUTHENTICATION
+			// ==========================================================================
 			'login/error' => [
 				'GET' => [
 					'controller' => $loginController,
 					'action' => 'error'
-				]
+				],
+				'template' => 'layout_admin.html.php'
 			],
 			'login/permissionserror' => [
 				'GET' => [
@@ -113,12 +102,6 @@ class AppRoutes implements \Ninja\Routes {
 				'POST' => [
 					'controller' => $loginController,
 					'action' => 'processLogin'
-				]
-			],
-			'' => [
-				'GET' => [
-					'controller' => $jokeController,
-					'action' => 'home'
 				]
 			]
 		];
