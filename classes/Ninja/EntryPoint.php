@@ -47,7 +47,7 @@ class EntryPoint {
 			$template = $routes[$this->route]['template'] ?? '';
 			$page = $controller->$action();
 
-			$title = $page['title'];
+			$title = $page['title'] ?? '';
 
 			// 2021-07-01 OG NEW - if template is set, then load the template 
 			if ($template != '') {
@@ -60,11 +60,12 @@ class EntryPoint {
 
 				echo $this->loadTemplate($template, ['loggedIn' => $authentication->isLoggedIn(),
 															'output' => $output,
-															'title' => $title
+															'title' => $title,
+															'route' => $this->route
 															]);
 				// 2021-07-01 OG NEW - else, echo the page variable that returns json 
 			} else {
-				echo $template;
+				echo $page;
 			}
 														
 		}

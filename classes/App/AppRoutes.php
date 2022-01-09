@@ -66,6 +66,12 @@ class AppRoutes implements \Ninja\Routes {
 				],
 				'template' => 'layout_admin.html.php'
 			],
+			'admin/events/create' => [
+				'POST' => [
+					'controller' => $eventController,
+					'action' => 'create'
+				]
+			],
 			// ==========================================================================
 			// AUTHENTICATION
 			// ==========================================================================

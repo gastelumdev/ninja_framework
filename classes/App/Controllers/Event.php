@@ -26,4 +26,23 @@ class Event {
             ]
         ];
     }
+
+    public function create() {
+        $request = $_POST;
+        $user = 5;
+
+        $event = [
+            'name' => $request['name'],
+            'description' => $request['description'],
+            'date' => $request['date'] . ' ' . $request['time'],
+            'created_by' => $user
+        ];
+
+        $thisEvent = $this->eventsTable->save($event);
+
+        // $event['id'] = $thisEventId;
+
+        $response = json_encode($thisEvent);
+        return $response;
+    }
 }
