@@ -34,17 +34,52 @@ $("#create").submit(function(event) {
             dataTable.page((count/10) + 1);
 
             // 2022-01-09 OG NEW - Display the row in the table 
-            var newRow = [];
+            var newRow = ['<button class="btn btn-danger btn-sm btn-delete" value="'+ parsedData['id'] +'">Delete</button>'];
 
             request.forEach(function(requestInput) {
                 newRow.push(parsedData[requestInput['name']]);
             });
 
+            console.log(newRow);
+
             dataTable.rows().add(newRow);
             
             // 2022-01-09 OG NEW - Increase the counter by one
             countElement.innerHTML = count;
+
+            // 2022-01-09 OG NEW - Empty the array for next creation 
+            newRow = [];
+
+            del();
         }
     });
 });
 
+// 2022-01-09 OG NEW - Admin delete functionality
+// =============================================================================
+// DELETE
+// 
+// The request get handled by ajax to allow for asynchronous functionality
+// =============================================================================
+function del() {
+    $('.btn-delete').click(function() {
+        // 2022-01-09 OG NEW - Create the object for the ajax request
+        var data = {id: this.value};
+        var row = $(this).parent().parent();
+        
+        $.ajax({
+            url: 'index.php?'+ document.getElementById('route').value +'/delete',
+            method: 'POST',
+            data: data,
+            success: function(data) {
+                row.remove();
+
+                var countElement = document.getElementById('count');
+                var count = parseInt(countElement.innerHTML) - 1;
+                countElement.innerHTML = count;
+            }
+        });
+    });
+}
+
+del();
