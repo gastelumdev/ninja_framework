@@ -44,4 +44,16 @@ class Event {
         $response = json_encode($thisEvent);
         return $response;
     }
+
+    public function delete() {
+        $request = $_POST;
+
+        $this->eventsTable->delete($request['id']);
+
+        if (isset($_POST['id'])) {
+            return json_encode(['msg' => 'Success']);
+        } else {
+            return json_encode(['msg' => 'Failed']);
+        }
+    }
 }

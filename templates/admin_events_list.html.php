@@ -61,9 +61,10 @@
                 <h4 class="card-title">List of events</h4>
             </div>
             <div class="card-body">
-                <table class='table table-striped' id="table1">
+                <table class='table' id="table1">
                     <thead>
                         <tr>
+                            <th>Action</th>
                             <th>Name</th>
                             <th>Description</th>
                             <th>Date</th>
@@ -72,6 +73,7 @@
                     <tbody id="tableBody">
                         <?php foreach ($events as $event): ?>
                         <tr>
+                            <td><button class="btn btn-danger btn-sm btn-delete" name="" value="<?=$event->id?>">Delete</button></td>
                             <td><?=$event->name?></td>
                             <td><?=$event->description?></td>
                             <td><?=$event->date?></td>
