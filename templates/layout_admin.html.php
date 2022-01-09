@@ -17,7 +17,7 @@
 </head>
 
 <!-- 2022-01-09 OG NEW - This makes the route from EntryPoint.php accessible in JS --> 
-<input type="hidden" value="<?=$route?>">
+<input id="route" type="hidden" value="<?=$route?>">
 <body>
     <div id="app">
         <div id="sidebar" class='active'>
