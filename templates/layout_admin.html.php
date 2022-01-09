@@ -16,6 +16,8 @@
     <link rel="shortcut icon" href="assets/images/favicon.svg" type="image/x-icon">
 </head>
 
+<!-- 2022-01-09 OG NEW - This makes the route from EntryPoint.php accessible in JS --> 
+<input type="hidden" value="<?=$route?>">
 <body>
     <div id="app">
         <div id="sidebar" class='active'>
@@ -153,6 +155,9 @@
     <script src="assets/js/vendors.js"></script>
 
     <script src="assets/js/main.js"></script>
+
+    <script src="assets/js/jquery.js"></script>
+    <script src="assets/js/crud-functions.js"></script>
 </body>
 
 </html>
