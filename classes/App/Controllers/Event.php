@@ -38,9 +38,8 @@ class Event {
             'created_by' => $user
         ];
 
+        // 2022-01-09 OG NEW - This saves the data and returns with the new id 
         $thisEvent = $this->eventsTable->save($event);
-
-        // $event['id'] = $thisEventId;
 
         $response = json_encode($thisEvent);
         return $response;
