@@ -101,6 +101,7 @@ function del() {
                         // 2022-01-09 OG NEW - First set the table page to the current page or else it will not remove it
                         dataTable.page(dataTable.currentPage);
                         dataTable.rows().remove(i);
+                        dataTable.update();
                     }
                 }
 
