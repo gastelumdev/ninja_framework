@@ -78,13 +78,19 @@ $("#create").submit(function(event) {
 
             request.forEach(function(requestInput) {
                 var type;
+                var name;
+                var value = parsedData[requestInput['name']];
                 console.log(requestInput['name']);
                 if (requestInput['name'] == 'date' || requestInput['name'] == 'time') {
                     type = requestInput['name'];
+                    if (requestInput['name'] == 'time'){
+                        console.log(value);
+                        value = parsedData['militaryTime'];
+                    }
                 } else {
                     type = 'text'
                 }
-                var html = '<div class="tableData">' + requestInput['value'] + '</div><input class="inputData" type="' + type + '" name="' + requestInput['name'] + '" value="' + requestInput['value'] + '" style="display: none;">'
+                var html = '<div class="tableData">' + parsedData[requestInput['name']] + '</div><input class="inputData" type="' + type + '" name="' + requestInput['name'] + '" value="' + value + '" style="display: none;">'
                 newRow.push(html);
             });
 
@@ -133,14 +139,19 @@ function save() {
             data: requestData,
             success: function(data) {
                 var parsedData = JSON.parse(data);
-                console.log(parsedData);
+
+                for (var i = 0; i < inputs.length; i++) {
+                    if (inputs[inputs[i].name].name == 'time') {
+                        inputs[inputs[i].name].previousElementSibling.innerHTML = parsedData['time'];
+                    } else {
+                        inputs[inputs[i].name].previousElementSibling.innerHTML = inputs[i].value;
+                        // inputs[inputs[i].name].value = parsedData[inputs[i].name];
+                    }
+                }
             }
         });
 
-        for (var i = 0; i < inputs.length; i++) {
-            inputs[inputs[i].name].previousElementSibling.innerHTML = inputs[i].value;
-            // inputs[inputs[i].name].value = parsedData[inputs[i].name];
-        }
+        
     });
 }
 
