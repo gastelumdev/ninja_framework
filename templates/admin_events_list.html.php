@@ -68,50 +68,35 @@
                             <th>Name</th>
                             <th>Description</th>
                             <th>Date</th>
+                            <th>Time</th>
                         </tr>
                     </thead>
                     <tbody id="tableBody">
                         <?php foreach ($events as $event): ?>
                         <tr>
                             <td>
-                                <button class="btn btn-danger btn-sm btn-delete" name="" value="<?=$event->id?>">Delete</button>
-                                <button type="button" class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModalScrollable<?=$event->id?>">
-                                Edit
-                                </button>
+                                <button id="delete<?=$event['id']?>" type="button" class="btn btn-danger btn-sm btn-delete" value="<?=$event['id']?>">Delete</button>
+                                <button id="edit<?=$event['id']?>" type="button" class="btn btn-success btn-sm btn-edit" value="<?=$event['id']?>">Edit</button>
+                                <button id="save<?=$event['id']?>" type="submit" class="btn btn-primary btn-sm btn-save" value="<?=$event['id']?>" style="display: none;">Save</button>
+                                <button id="cancel<?=$event['id']?>" type="button" class="btn btn-danger btn-sm btn-cancel" value="<?=$event['id']?>" style="display: none;">Cancel</button>
                             </td>
-                            <td><div contenteditable="true" spellcheck="false" class="edit"><?=$event->name?></div></td>
-                            <td><div contenteditable="true" spellcheck="false" class="edit"><?=$event->description?></div></td>
-                            <td><?=$event->date?></td>
+                            <td>
+                                <div class="tableData"><?=$event['name']?></div>
+                                <input class="inputData" type="text" name="name" value="<?=$event['name']?>" style="display: none;">
+                            </td>
+                            <td>
+                                <div class="tableData" class="edit"><?=$event['description']?></div>
+                                <input class="inputData" type="text" name="description" value="<?=$event['description']?>" style="display: none;">
+                            </td>
+                            <td>
+                                <div class="tableData" class="edit"><?=$event['date']?></div>
+                                <input class="inputData" type="date" name="date" value="<?=$event['date']?>" style="display: none;">
+                            </td>
+                            <td>
+                                <div class="tableData" class="edit"><?=$event['time']?></div>
+                                <input class="inputData" type="time" name="time" value="<?=$event['time']?>" style="display: none;">
+                            </td>
                         </tr>
-                        <div class="modal fade" id="exampleModalScrollable<?=$event->id?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle<?=$event->id?>" aria-hidden="true">
-                            <div class="modal-dialog modal-dialog-scrollable" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalScrollableTitle<?=$event->id?>">
-                                            Scrolling long Content</h5>
-                                        <button type="button" class="close" data-bs-dismiss="modal"
-                                            aria-label="Close">
-                                            <i data-feather="x"></i>
-                                        </button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <?=$event->id?>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-light-secondary"
-                                            data-bs-dismiss="modal">
-                                            <i class="bx bx-x d-block d-sm-none"></i>
-                                            <span class="d-none d-sm-block">Close</span>
-                                        </button>
-                                        <button type="button" class="btn btn-primary ml-1"
-                                            data-bs-dismiss="modal">
-                                            <i class="bx bx-check d-block d-sm-none"></i>
-                                            <span class="d-none d-sm-block">Accept</span>
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                         <?php endforeach; ?>
                     </tbody>
                 </table>
