@@ -94,7 +94,7 @@
                             </td>
                             <td>
                                 <div class="tableData" class="edit"><?=$event['time']?></div>
-                                <input class="inputData" type="time" name="time" value="<?=$event['time']?>" style="display: none;">
+                                <input class="inputData" type="time" name="time" value="<?=$event['militaryTime']?>" style="display: none;">
                             </td>
                         </tr>
                         <?php endforeach; ?>

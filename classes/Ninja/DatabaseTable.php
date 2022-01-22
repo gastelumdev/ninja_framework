@@ -131,6 +131,7 @@ class DatabaseTable {
 		}
 		catch (\PDOException $e) {
 			$this->update($record);
+			return $this->pdo->lastInsertId();
 		}
 	}
 
