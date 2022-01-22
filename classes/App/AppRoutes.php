@@ -78,6 +78,12 @@ class AppRoutes implements \Ninja\Routes {
 					'action' => 'delete'
 				]
 			],
+			'admin/events/update' => [
+				'POST' => [
+					'controller' => $eventController,
+					'action' => 'update'
+				]
+			],
 			// ==========================================================================
 			// AUTHENTICATION
 			// ==========================================================================
