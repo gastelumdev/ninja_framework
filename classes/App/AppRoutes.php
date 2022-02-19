@@ -48,7 +48,8 @@ class AppRoutes implements \Ninja\Routes {
 				'POST' => [
 					'controller' => $userController,
 					'action' => 'registerUser'
-				]
+				],
+				'template' => 'layout_auth.html.php'
 			],
 			'user/success' => [
 				'GET' => [
@@ -120,7 +121,8 @@ class AppRoutes implements \Ninja\Routes {
 				'POST' => [
 					'controller' => $loginController,
 					'action' => 'processLogin'
-				]
+				],
+				'template' => 'layout_auth.html.php'
 			]
 		];
 
