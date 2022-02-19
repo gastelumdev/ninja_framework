@@ -21,14 +21,19 @@ class Register {
 	}
 
 	public function registerUser() {
-		$user = $_POST['user'];
+		$user = $_POST;
 
 		//Assume the data is valid to begin with
 		$valid = true;
 		$errors = [];
 
 		//But if any of the fields have been left blank, set $valid to false
-		if (empty($user['name'])) {
+		if (empty($user['firstname'])) {
+			$valid = false;
+			$errors[] = 'Name cannot be blank';
+		}
+
+		if (empty($user['lastname'])) {
 			$valid = false;
 			$errors[] = 'Name cannot be blank';
 		}
@@ -67,7 +72,7 @@ class Register {
 			//and a hashed password
 			$this->usersTable->save($user);
 
-			header('Location: /user/success');
+			header('Location: index.php?login');
 		}
 		else {
 			//If the data is not valid, show the form again
