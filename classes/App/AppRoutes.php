@@ -111,7 +111,8 @@ class AppRoutes implements \Ninja\Routes {
 				'GET' => [
 					'controller' => $loginController,
 					'action' => 'logout'
-				]
+				],
+				'template' => 'layout_public.html.php'
 			],
 			'login' => [
 				'GET' => [
