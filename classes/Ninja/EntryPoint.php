@@ -57,7 +57,7 @@ class EntryPoint {
 				else {
 					$output = $this->loadTemplate($page['template']);
 				}
-
+				
 				echo $this->loadTemplate($template, ['loggedIn' => $authentication->isLoggedIn(),
 															'output' => $output,
 															'title' => $title,

@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="x-ua-compatible" content="ie=edge" />
-    <title>Lindy - Bootstrap 5 UI Kit</title>
+    <title><?=$title?></title>
     <meta name="description" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="shortcut icon" type="image/x-icon" href="assets/images/favicon.svg"/>
@@ -72,7 +72,7 @@
                   <div class="collapse navbar-collapse sub-menu-bar" id="navbarSupportedContent2">
                     <ul id="nav2" class="navbar-nav ml-auto">
                       <li class="nav-item">
-                        <a class="page-scroll" href="#0">Home</a>
+                        <a class="page-scroll" href="index.php">Home</a>
                       </li>
                       <li class="nav-item">
                         <a class="page-scroll" href="#0">About Us</a>
@@ -86,14 +86,21 @@
                       <li class="nav-item">
                         <a class="page-scroll" href="#0">Price</a>
                       </li>
-                      <li class="nav-item">
-                        <a class="page-scroll" href="#0">Contact</a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="page-scroll" href="index.php?admin/users">Dashboard</a>
-                      </li>
+                      <?php if ($loggedIn == false): ?>
+                        <li class="nav-item">
+                          <a class="page-scroll" href="index.php?login">Login</a>
+                        </li>
+                      <?php endif; ?>
+                      <?php if ($loggedIn): ?>
+                        <li class="nav-item">
+                          <a class="page-scroll" href="index.php?admin/users">Dashboard</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="page-scroll" href="index.php?logout">Logout</a>
+                        </li>
+                      <?php endif; ?>
                     </ul>
-                    <a href="#0" class="button button-sm radius-10 d-none d-lg-flex">Get Started</a>
+                    <a href="index.php?user/register" class="button button-sm radius-10 d-none d-lg-flex">Get Started</a>
                   </div>
                   <!-- navbar collapse -->
                 </nav>

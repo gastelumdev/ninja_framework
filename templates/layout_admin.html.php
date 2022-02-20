@@ -54,6 +54,13 @@
                             </a>
                         </li>
 
+                        <li class="sidebar-item">
+                            <a href="index.php?logout" class='sidebar-link'>
+                                <i data-feather="home" width="20"></i>
+                                <span>Logout</span>
+                            </a>
+                        </li>
+
 
 
                     </ul>
