@@ -100,7 +100,9 @@
                         </li>
                       <?php endif; ?>
                     </ul>
-                    <a href="index.php?user/register" class="button button-sm radius-10 d-none d-lg-flex">Get Started</a>
+                    <?php if ($loggedIn == false): ?>
+                      <a href="index.php?user/register" class="button button-sm radius-10 d-none d-lg-flex">Get Started</a>
+                    <?php endif; ?>
                   </div>
                   <!-- navbar collapse -->
                 </nav>
