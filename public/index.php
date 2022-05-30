@@ -12,7 +12,7 @@ try {
 	else
 	    $route = $_SERVER['QUERY_STRING']; // 5/22/18 JG NEW1l: give the query = remaining string
       
-// 	print ('index.php: 19 route = ' . $route . '<br>');  // JG test
+// 	print ('index.php: 19 route = ' . $route . '<br>');
 	
 	  //5/22/18 JG NEW6l: adapter to the code b/c of the .htaccess is ignored by apache
 	if (strlen(strtok($route, '?')) <  strlen($route))  // string has a second ?
