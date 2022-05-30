@@ -5,12 +5,6 @@ try {
 	error_reporting(E_ERROR | E_WARNING | E_PARSE);
 	
 	$route = ltrim(strtok($_SERVER['REQUEST_URI'], '?'), '/');   // JG remove leading / and extract the string till ? from e.g. /ch14_FINAL-Website/public/index.php?joke/list?page=1
-
-	
-	//***********************JG  5/24/18 NEW line 8 - 42 ADAPTER to replace URL writing feature b/c .htaccess file is ignored by Apache********************	
-// 	print ('index.php 9: REQUEST_URI = ' . $_SERVER['REQUEST_URI'] . '<br>');  // JG test
-// 	print ('index.php: 10 ltrim route = ' . $route . '<br>');  // JG test
-	
 	
 	   //5/22/18 JG NEW4l: adapter to the code b/c of the .htaccess is ignored by apache
 	if ($route == ltrim($_SERVER['REQUEST_URI'],  '/') ) 
